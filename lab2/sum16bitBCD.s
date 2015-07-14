@@ -2,26 +2,27 @@
         ;; initializing carry
         MVI     C, 00H
         ;; loading data
-        STA     8284H
+        LDA     8284H
         MOV     C, A
-        STA     8286H
-        ADA     C
+        LDA     8286H
+        ADD     C
         ;; converting to BCD
         DAA
         ;; storing result
         STA     8288H
         ;; loading data
-        STA     8285H
+        LDA     8285H
         MOV     C, A
-        STA     8287H
+        LDA     8287H
         ADC     C
         ;; converting to BCD
         DAA
+	;; storing result
+	STA	8289H	
         ;; detecting carry
         JNC     L1
-        INR     C
-L1:
+        	INR     C
         ;; storing carry
-        MOV     A, C
-        STA     8288H
+L1:     MOV     A, C
+        STA     828AH
         HLT

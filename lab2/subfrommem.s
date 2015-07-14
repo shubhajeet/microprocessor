@@ -3,13 +3,15 @@
         LDA     8092H
         MOV     B, A
         LDA     8090H
-        SUA     B
+	;; subtracting lsb
+        SUB     B
         ;; storing lsb
         STA     8094H
         ;; loading msb
         LDA     8093H
         MOV     B, A
-        SUC     B
+	;; subtracting msb
+        SBB     B
         ;; storing msb
         STA     8094H
         HLT

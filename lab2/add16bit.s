@@ -13,4 +13,4 @@
         OUT     40H
         MOV     A, H
         OUT     41H
-	HLT
+        HLT

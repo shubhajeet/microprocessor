@@ -6,6 +6,9 @@
         SUB     B
         ;; moving result to c
         MOV     C, A
+	;; swapping A and B
+	MOV	A,B
+	MOV	B,C
         ;; subtracting with b
         SUB     B
         HLT

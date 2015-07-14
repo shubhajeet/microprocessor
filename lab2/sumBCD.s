@@ -1,29 +1,32 @@
         ;; The table along side shows BCD data. Write a program to add the content at memory locatio 818A and 818B. Store the BCD result at meomory location 818C. Display both operands and sum in output ports.
+        portOp1: equ 40H
+        portOp2: equ 41H
+        portAns: equ 42H
         ;; initializing output
         MVI     A, 00H
         OUT     43H
         ;; initializing carry
         MVI     C, 00H
-        ;; loading data
-        LXI     H, 818AH
-        INX     H
-        MOV     A, M
-        ADA     M
+        ;; loading operand 1
+        STA     818AH
+        MOV     B, A
+        ;; displaying operand 1
+        OUT     portOp1
+        ;; loading operand 2
+        STA     818BH
+        ;; displaying operand 2
+        OUT     portOp2
+        ADD     B
         ;; converting to BCD
         DAA
-        INX     H
         ;; storing result
-        MOV     M, A
+        STA     818CH
         ;; displaying output
-        OUT     40H
+        OUT     portAns
         ;; detecting carry
         JNC     L1
-        INR     C
-L1:
+                INR     C
         ;; storing carry
-        INX     H
-        MOV     M, C
-        ;; displaying carry
-        MOV     A, C
-        OUT     41H
+L1:     MOV     A, C
+        STA     818DH
         HLT

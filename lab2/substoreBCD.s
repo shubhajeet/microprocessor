@@ -3,7 +3,7 @@
         STA     4584H
         MOV     C, A
         STA     4586H
-        SUA     C
+        SUB     C
         ;; converting to BCD
         DAA
         ;; storing result
@@ -12,7 +12,7 @@
         STA     4585H
         MOV     B, A
         STA     4587H
-        SUC     B
+        SBB     B
         ;; converting to BCD
         DAA
         ; storing result

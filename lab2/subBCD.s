@@ -14,10 +14,12 @@
         LDA     818BH
         MOV     B, A
         OUT     portOp2
-        ;; converting to 9s complement
+        ;; converting to 99s complement
         MVI     A, 99H
         SUB     B
         MOV     B, A
+        ;; converting to 100s complement
+        INR     A
         ;; converting to BCD
         ADD     C
         DAA

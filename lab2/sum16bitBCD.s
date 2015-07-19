@@ -1,6 +1,6 @@
         ;; Write a program  to add the 6 bit data at memory location 8284 with the 16 bit data BCD dat at 826 and store the BCD result at 8288
         ;; initializing carry
-        MVI     C, 00H
+        MVI     D, 00H
         ;; loading data
         LDA     8284H
         MOV     C, A
@@ -21,8 +21,8 @@
 	STA	8289H	
         ;; detecting carry
         JNC     L1
-        	INR     C
+        	INR     D
         ;; storing carry
-L1:     MOV     A, C
+L1:     MOV     A, D
         STA     828AH
         HLT

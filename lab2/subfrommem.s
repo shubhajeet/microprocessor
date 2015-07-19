@@ -13,5 +13,5 @@
 	;; subtracting msb
         SBB     B
         ;; storing msb
-        STA     8094H
+        STA     8095H
         HLT

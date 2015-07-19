@@ -7,7 +7,7 @@
         JNC     L1
 	        INR     H
         ;; Storing data
-L1:     SHLD    80A2H
+L1:     SHLD    80A5H
         ;; loading data
         LHLD    80A4H
         ;; decrement by 1
@@ -16,5 +16,5 @@ L1:     SHLD    80A2H
         JNC     L2
         	DCR     H
         ;; storing data
-L2:     SHLD    80A4H
+L2:     SHLD    80A7H
         HLT

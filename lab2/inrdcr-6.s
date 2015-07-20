@@ -8,14 +8,16 @@
         JNZ     L1
 	        INR     H
         ;; Storing data
-L1:     SHLD    80A5H
+L1:     SHLD    80A6H
         ;; loading data
         LHLD    80A4H
-        ;; decrement by 1
-        DCR     L
+	MVI	A, 00H
+	ADD	L
         ;; detecting borrow via zero flag
-        JNZ     L2
+        JNZ     l2
         	DCR     H
+        ;; decrement by 1
+l2:     DCR     L
         ;; storing data
-L2:     SHLD    80A7H
+	SHLD    80A8H
         HLT

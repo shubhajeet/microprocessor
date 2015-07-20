@@ -15,7 +15,7 @@
         LDA     818BH
         MOV     B, A
         OUT     portOp2
-        ;; converting to 99s complement
+        ;; converting to 100s complement
         CALL    ncmp
         ;; subtracting by 100s complement
         ADD     C

@@ -1,4 +1,5 @@
-        ;; Write a program  to add the 6 bit data at memory location 8284 with the 16 bit data BCD dat at 826 and store the BCD result at 8288
+        ;; Assignment 8
+	;; Write a program  to add the 6 bit data at memory location 8284 with the 16 bit data BCD dat at 826 and store the BCD result at 8288
         ;; initializing carry
         MVI     D, 00H
         ;; loading data

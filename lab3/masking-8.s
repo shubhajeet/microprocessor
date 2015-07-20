@@ -8,6 +8,6 @@
         ANI 10H
         ;; checking if it bit is 1
         JZ l1
-        MVI 01H
+        MVI A,01H
         OUT port
 l1:     RST 5

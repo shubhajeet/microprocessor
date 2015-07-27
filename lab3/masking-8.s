@@ -6,8 +6,13 @@
         ;; loading data
         LDA 9025H
         ANI 10H
+        ;; rotating D5 to CY
+        RAL
+        RAL
+        RAL
+        RAL
         ;; checking if it bit is 1
-        JZ l1
+        JNC l1
         MVI A,01H
         OUT port
 l1:     RST 5

@@ -5,7 +5,7 @@
         ;; setting auxillary flag
         ORI     10H
         ;; resetting parity flag
-        ANI     FBH
+        ANI     0FBH
         MOV     C,A
         PUSH    B
         POP     psw

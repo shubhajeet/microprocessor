@@ -1,3 +1,7 @@
         ;; Write a program to set zero and parity flags and reset other flags
-        MVI A, 00
+        PUSH    psw
+        POP     B
+        MVI     C, 44H
+        PUSH    B
+        POP     psw
         RST 5

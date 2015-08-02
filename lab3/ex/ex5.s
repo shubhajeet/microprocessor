@@ -1,6 +1,6 @@
         ;; ex5
-        LXI B, BBBBH
-        LXI D, DDDDH
+        LXI B, 0BBBBH
+        LXI D, 0DDDDH
         PUSH B
         PUSH D
         LXI B, 1234H

@@ -3,4 +3,5 @@
         LXI H, 805AH
         SPHL
         XCHG
+	XTHL
         RST 5

@@ -34,10 +34,10 @@ sec:    MVI A, 60H
         JMP start
 delay1s:LXI B AC2C
 lp:     DCX B
-        MOV A, C
-        ORA B
-        JNZ lp
-        RET
+	MOV A, C
+	ORA B
+	JNZ lp
+	RET
         ;; stack preservation
 disp:   PUSH PSW
         PUSH B

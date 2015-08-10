@@ -5,16 +5,16 @@ msb:    equ 41H
         MVI A, 80H
         OUT 43H
         ;; Initializing variables
-        MVI C, 50
-        LXI D, 0000H
-        MOV A, 00H
+        MVI C, 32H
+        MVI D, 00H
+        MVI A, 00H
         ;; looping
 l1:     ADD C
         JNC     l2
-l2:             INR D
-        DCR C
-        JNZ l1:
+             INR D
+l2:        DCR C
+        JNZ l1
         OUT lsb
-        MVI A, D
+        MOV A, D
         OUT msb
         RST 5

@@ -48,3 +48,4 @@ disp:   PUSH PSW
         POP H
         POP D
         POP PSW
+todispcode:

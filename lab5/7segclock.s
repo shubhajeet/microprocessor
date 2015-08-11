@@ -33,7 +33,7 @@ sec:    MVI A, 60H
         JNZ hr
         JMP start
 delay1s:LXI B AC2C
-lp:     DCX B
+	lp:     DCX B
 	MOV A, C
 	ORA B
 	JNZ lp

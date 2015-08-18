@@ -2,7 +2,6 @@
         MVI A, 80H
         OUT 43H
         ;; initialization of output ports
-        LXI H, 8070H
         MVI A, 0AH              ;counter
         LXI H, 8050H            ;source
         LXI B, 0000H            ;odd
@@ -16,12 +15,12 @@ loop:   PUSH psw
         RAL
         ADD E
         MOV E, A
-        JNC carry1:
+        JNC carrya
 	    INR D
-carry1: JMP out
+carrya: JMP out
 odd:    RAL
         ADD C
-        JNC out:
+        JNC out
 	        INR B
 out:    INX H
         POP PSW
@@ -33,16 +32,17 @@ out:    INX H
         STA 8070H
         MOV A, D
         STA 8071h
-        CALL delay1s
-        CALL delay1s
+        CALL delays
+	CALL delays
+	CALL delays
+        CALL delays
         MOV A, C
         OUT 40H
         STA 8060H
         MOV A, B
         STA 8061h
         RST 5
-        ;;
-delay1s:LXI B AC2C
+delays: LXI B, 0A2C2H
 lp:     DCX B
 	MOV A, C
 	ORA B

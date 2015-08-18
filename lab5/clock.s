@@ -6,27 +6,28 @@ hsec:   equ 42H
         MVI A, 80H
         OUT 43H
         ;; declaring necessary data
-start:  MVI H, 24H
-hr:     MVI L, 60
-min     MVI D, 60
+start:  MVI H, 23
+hr:     MVI L, 59
+min:    MVI D, 60
 sec:    MVI A, 60
         SUB D
         OUT psec
-        CALL delay1s
+        CALL delays
         DCR D                   ;decreasing second
         JNZ sec
-        DCR L
         MVI A, 60
         SUB L
         OUT msec
+	DCR L
         JNZ min
-        DCR H
         MVI A, 24
         SUB H
+	DCR H
         OUT hsec
         JNZ hr
         JMP start
-delay1s:LXI B 0AC2CH
+delays: nop
+        LXI B, 01H
 lp:     DCX B
         MOV A, C
         ORA B

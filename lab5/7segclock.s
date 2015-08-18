@@ -1,14 +1,11 @@
         ;; Write a program to make a clock. Use port A, B, and C to dispaly second, minute and hour respectively. The clock shoudl be 24 hours basis
-psec:   equ 40H
-msec:   equ 41H
-hsec:   equ 42H
         ;; initializing output ports
         MVI A, 80H
         OUT 43H
         ;; declaring necessary data
-start:  MVI H, 24H
-hr:     MVI L, 60H
-min     MVI D, 60H
+start:  MVI H, 23
+hr:     MVI L, 59
+min:    MVI D, 60
         ;; memory initializing
         MVI B, 00H
         MVI A, 00H
@@ -19,20 +16,48 @@ sec:    MVI A, 60H
 	SUB D
         STA 8FF1H
         CALL disp
-        CALL delay1s
-        DCR D                   ;decreasing second
+        CALL delays
+        PUSH PSW
+	PUSH B
+	PUSH D
+	PUSH H
+	CALL 044CH
+	POP H
+	POP D
+	POP B
+	POP PSW
+        DCR D
         JNZ sec
-        DCR L
         MVI A, 60H
 	SUB L
+        DCR L
+        STA 8FF0H
+        PUSH PSW
+	PUSH B
+	PUSH D
+	PUSH H
+	CALL 0440H
+	POP H
+	POP D
+	POP B
+	POP PSW
         JNZ min
-        DCR H
      	MVI A, 60H
 	SUB H
         STA 8FEFH
+        PUSH PSW
+	PUSH B
+	PUSH D
+	PUSH H
+	CALL 0440H
+	POP H
+	POP D
+	POP B
+	POP PSW
+        DCR H
         JNZ hr
         JMP start
-delay1s:LXI B AC2C
+delays: LXI B, 0A2C2H
 	lp:     DCX B
 	MOV A, C
 	ORA B
@@ -48,4 +73,4 @@ disp:   PUSH PSW
         POP H
         POP D
         POP PSW
-todispcode:
+

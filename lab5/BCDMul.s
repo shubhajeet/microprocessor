@@ -10,11 +10,13 @@
 mul:    ADD B
         DAA
         OUT 40H
-        CALL delay1s
-        CALL delay1s
+        CALL delays
+        CALL delays
+	CALL delays
+	CALL delays
         DCR C
         JNZ mul
-delay1s:LXI B AC2C
+delays: LXI B, 0A2C2H
 lp:     DCX B
 	MOV A, C
 	ORA B

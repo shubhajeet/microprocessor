@@ -7,5 +7,5 @@
 mul:    ADD B
         MOV M, A
         DCR C
-        JNZ mul:
+        JNZ mul
         RST 5

@@ -13,6 +13,7 @@ sec:    MVI A, 60
         SUB D
         OUT psec
         CALL delays
+        CALL delays
         DCR D                   ;decreasing second
         JNZ sec
         MVI A, 60

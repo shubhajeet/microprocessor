@@ -6,27 +6,41 @@
 l1:     CMP M                   ; finding largest
         JNC l2
         MOV A, M                ; largest value to A
-        MOV D, H                ; storing address
-        MOV E, L
 l2:     INR H
         DCR C
         JNZ l1
         ;; displaying the data
         ;; update data field
-        LXI H, 8FEFH
-        MOV M, E
-        INX H
-        MOV M, D
-        INX H
-        MOV M, A
+        STA 8FF1H
         PUSH PSW
-	PUSH B
-	PUSH D
-	PUSH H
-	CALL 044CH
+        PUSH B
+        PUSH D
+        PUSH H
         CALL 0440H
-	POP H
-	POP D
-	POP B
-	POP PSW
+        POP H
+        POP D
+        POP B
+        POP PSW
+        LXI H, 9000H
+        INX H
+        MVI M, 16H
+        INX H
+        MVI M, 16H
+        INX H
+        MVI M, 16H
+        INX H
+        MVI M, 0EH
+        LXI H, 9000H
+        ;;  displaying L
+        PUSH PSW
+        PUSH B
+        PUSH D
+        PUSH H
+        MVI A, 0
+        CALL 0389H
+        POP H
+        POP D
+        POP B
+        POP PSW
+
         RST 5

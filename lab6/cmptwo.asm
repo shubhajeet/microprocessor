@@ -1,4 +1,4 @@
-        TITLE two tables having ten 16 bit data in each and Wap to add two numbers and store in 3rd
+        TITLE two tables having ten 16 bit data in each
         .MODEL SMALL
         .STACK
         .DATA
@@ -13,9 +13,12 @@
         MOV CX, 10
         MOV DI, 10
 lo:     MOV AX, VALS1[DI]
-        CMP VALS2[DI]           ; TODO
-        MOV VALS3[DI], AX
-        loop lo
+        CMP AX, VALS2[DI]
+        JCY br
+        MOV VLAS[DI], 0000H
+        JMP out
+br:     MOV VALS[DI], 1FFFH
+out:    loop lo
 
         MOV AX, 4C00H
         INT 21H

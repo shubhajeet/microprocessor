@@ -1,4 +1,4 @@
-        TITLE two tables having ten 16 bit data in each and Wap to add two numbers and store in 3rd
+        TITLE two tables having ten 16 bit data in each
         .MODEL SMALL
         .STACK
         .DATA
@@ -14,6 +14,7 @@
         MOV DI, 0
 lo:     MOV AX, VALS1[DI]
         CMP AX, VALS2[DI]
+
         JL sm
         MOV VALS3[DI], 0000H
         JMP break

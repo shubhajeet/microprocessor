@@ -7,12 +7,14 @@ sudo apt-get install gnusim8085
    #+end_src
    above code will install graphical simulator in ubuntu.
 ** Intel 8086 microprocessor
-   All labs is being done on microsoft os
-   1.
+   All labs is being done on microsoft os(MSDOS)
+   Since I have ubuntu 64 bit i have used dosbox
+
+1.
 #+begin_src bash
 sudo apt-get install dosbox
    #+end_src
-   2. Download MASM assembler
+   2. Download MASM assembler. It is inside masm folder.
    3.
    #+BEGIN_SRC doxbox
 mount c: path_to_MASM_assembler

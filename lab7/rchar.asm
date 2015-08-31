@@ -1,7 +1,7 @@
 	TITLE read from the keyboard
 	.MODEL SMALL
 	.DATA
-	STRLEN DB 20
+	STRLEN DW 20
 	STR DB 20 DUP(' ')
 	.STACK
 	.CODE
@@ -9,11 +9,11 @@
 	MOV AX, @DATA
 	MOV DS, AX
 	;; reading string
-	MOV CX,STRLEN
+	MOV CX, STRLEN
         LEA BX, STR
 l1:     MOV AH, 01H
         INT 21H
-        MOV BYTEPTR[BX], AL
+        MOV BYTE PTR[BX], AL
         INC BX
         loop l1
 	;; new line character
@@ -27,7 +27,7 @@ l1:     MOV AH, 01H
         MOV CX, STRLEN
         LEA BX, STR
 l2:     MOV AH, 02H
-	MOV AL, BYTEPTR[BX]
+	MOV DL, BYTE PTR[BX]
         INT 21H
         INC BX
         loop l2

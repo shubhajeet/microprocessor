@@ -16,14 +16,19 @@
         MOV AH, 0AH
         INT 21H
         ;; displaying string
-        MOV CX, STRSZ
+        MOV CX, 00
+        MOV CL, STRSZ
         LEA BX, STR
 l1:     MOV DL, [BX]
-        CMP ' '
+        CMP DL, ' '
         JNE ex
         ;; getting present cursor position
-
+        MOV AH, 03H
+        INT 10H
         ;; moving cursor position down by one row
+        INC DH
+        MOV AH, 02H
+        INT 10H
 ex:     MOV AH, 02H
         INT 21H
         INC BX

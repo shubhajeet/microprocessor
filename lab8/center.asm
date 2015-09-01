@@ -14,7 +14,7 @@
         LEA DX, STRLEN
         MOV AH, 0AH
         INT 21H
-	;; clearing the screen
+        ;; clearing the screen
         MOV AH, 00
         MOV AL, 03H
         INT 10H
@@ -29,7 +29,7 @@
         MOV DL, AL
         MOV AH, 02h
         INT 10H
-	;; displaying the string
+        ;; displaying the string
         LEA DX, STR
         MOV AH, 09H
         INT 21H

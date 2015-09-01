@@ -3,7 +3,7 @@
 	.DATA
 	STRLEN DB 20
 	STRSZ DB 00
-	STR DB 20 DUP(' ')
+	STR DB 20 DUP('$')
 	STRTRM DB '$'
 	.STACK
 	.CODE

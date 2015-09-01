@@ -3,7 +3,7 @@
         .DATA
         STRLEN DB 24
         STRSZ DB ?
-        STR 60 DB DUP(' ')
+        STR 60 DB DUP('$')
         STRTRM DB '$'
         .STACK
         .CODE

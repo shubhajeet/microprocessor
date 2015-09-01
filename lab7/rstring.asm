@@ -1,4 +1,4 @@
-	 	TITLE read from the keyboard
+	TITLE read from the keyboard
 	.MODEL SMALL
 	.DATA
 	STRLEN DB 20

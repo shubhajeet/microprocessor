@@ -1,7 +1,7 @@
         TITLE display char in center
         .MODEL SMALL
         .DATA
-        STRLEN DB 60
+        STRLEN DB 24
         STRSZ DB ?
         STR 60 DB DUP(' ')
         STRTRM DB '$'

@@ -21,13 +21,23 @@
         ;; making 20 20 screen
         MOV AL, 00H
         MOV CH, 00H
-        MOV CL, 20
+        MOV CL, 30
         MOV DH, 20
-        MOV DL, 60
+        MOV DL, 50
         MOV BH, 71H
         MOV AH, 06H
         INT 10H
-        CALL CEN
+        ;;         PUSH AX
+        MOV BH, 00
+        MOV DH, 10
+        MOV AX, 80
+        SUB AL, STRSZ
+        MOV DL, 02H
+        DIV DL
+        MOV DL, AL
+        MOV AX, 0200h
+        INT 10H
+        ;;         POP AX
         ;; displaying the string
         LEA DX, STR
         MOV AH, 09H
@@ -36,20 +46,5 @@
         MOV AH, 4CH
         INT 21H
         MAIN ENDP
-
-        CEN PROC
-        ;; displaying in the center
-        MOV BH, 00
-        MOV DH, 10
-        MOV AL, 80
-        MOV DL, STRSZ
-        SUB AL, DL
-        MOV DL, 02h
-        DIV DL
-        MOV DL, AL
-        MOV AH, 02h
-	INT 10H
-        RET
-        CEN ENDP
 
         END MAIN

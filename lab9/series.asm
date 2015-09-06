@@ -53,6 +53,10 @@ l3:     MOV DX, 00
         CMP AX, 00
         PUSH DX
         JG l3
+        ;; new line character
+	MOV AH, 02H
+	MOV DL, 0Ah
+	INT 21H
         ;; printing in decimal
 dis:    POP DX
         OR DX, 30H

@@ -4,10 +4,9 @@
         STRLEN DB 8
         STRSZ DB ?
         STR DB 9 DUP('$')
-        NUM DW 0
-        SUM DW 0
         BASE DW 10
-        BASEH DW 10H
+        BASEH DW 10h
+        SUM DW ?
         .STACK
         .CODE
         MAIN PROC FAR
@@ -33,40 +32,29 @@ l1:     MOV BL, [DI]
         ADD AX, BX
         INC DI
         LOOP l1
-brk:    MOV NUM, AX
-        ;; calculating the sum
-        MOV CX, 2
-        MOV BX, 2
-L2:     MOV AX, CX
-        MUL AX
-        MUL BX
-        ADD SUM, AX
-        CMP CX, NUM
-        INC CX
-        JBE L2
-
-	;; new line character
-	MOV AH, 02H
-	MOV DL, 0Ah
-	INT 21H
-	;; displaying in hex
-	MOV AX, SUM
-	MOV CX, 4
-l4:     XOR DX, DX
-	MUL BASEH
-	MOV BX, AX
-        CMP DX, 10
-        JAE alpha
-	OR DL, 30h
-        JMP disp
-alpha:  ADD DL, 55
-disp:   MOV AH, 02h
-	INT 21H
-	MOV AX, BX
-	LOOP l4
-
-        ;; converting to decimal
+brk:    ;; calculating the sum
+        MOV CX, AX
+        MOV AX, 00
+L2:     ADD AX, CX
+        LOOP L2
+        MOV SUM, AX
+        ;; new line character
+        MOV AH, 02H
+        MOV DL, 0Ah
+        INT 21H
+        ;; displaying in hex
         MOV AX, SUM
+        MOV CX, 4
+l4:     XOR DX, DX
+        MUL BASEH
+        OR DL, 30h
+        MOV BX, AX
+        MOV AH, 02h
+        INT 21H
+        MOV AX, BX
+        LOOP l4
+       ;; converting to decimal
+        MOV AX,SUM
         MOV CX, 00
         MOV BX, 10
 l3:     MOV DX, 00
@@ -76,9 +64,9 @@ l3:     MOV DX, 00
         PUSH DX
         JG l3
         ;; new line character
-	MOV AH, 02H
-	MOV DL, 0Ah
-	INT 21H
+        MOV AH, 02H
+        MOV DL, 0Ah
+        INT 21H
         ;; printing in decimal
 dis:    POP DX
         OR DX, 30H

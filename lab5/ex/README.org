@@ -1,0 +1,29 @@
+** CODE
+H 10
+L 11
+P 12
+I 13
+R 14
+U 15
+BLANK 16
+** Delay loop for 1 second
+| Code           | No of repetition of instruction | T states | Total          |
+|----------------+---------------------------------+----------+----------------|
+| MVI B x        | 1                               |        7 | 7              |
+| loop1: MVI C y | x                               |        7 | 7x             |
+| loop2: DCR C   | x*y                             |        4 | 4*x*y          |
+| JNZ loop2      | [(y-1) jump and 1 no jump]*x    |     7/10 | (10*(y-1)+7)*x |
+| DCR B          | x                               |        4 | 4*x            |
+| JNZ loop1      | (x-1) jump and 1 no jump        |     7/10 | 10*(x-1) + 7   |
+| RET            | 1                               |       10 | 10             |
+
+| Code         | repetition           | T states | Total          |
+| LXI B, COUNT | 1                    |       10 | 10             |
+| L1 DCX       | COUNT                |        6 | 6C             |
+| MOV A,B      | COUNT                |        4 | 4C             |
+| ORA C        | COUNT                |        4 | 4C             |
+| JNZ L1       | COUNT-1 jmp 1 NO JMP |     10/7 | 10 (COUNT-1)+7 |
+| RET          | 1                    |       10 | 10             |
+|              |                      |          |                |
+Here for count = A2C2
+total t states = 1000001

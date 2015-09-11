@@ -1,3 +1,9 @@
+---
+layout: page
+title: About
+permalink: /about/
+---
+
 * Microprocessor
 This repository contains the microprocessor lab code of IOE pulchowk campus done by Sujit Maharjan
 ** Intel 8085 microprocessor

@@ -4,25 +4,35 @@ title: About
 permalink: /about/
 ---
 
-* Microprocessor
+# Microprocessor
 This repository contains the microprocessor lab code of IOE pulchowk campus done by Sujit Maharjan
-** Intel 8085 microprocessor
+
+## Intel 8085 microprocessor
    simulator used gnusim8085
-   #+begin_src bash
+
+```
 sudo apt-get install gnusim8085
-   #+end_src
-   above code will install graphical simulator in ubuntu.
-** Intel 8086 microprocessor
+```
+
+above code will install graphical simulator in ubuntu.
+
+## Intel 8086 microprocessor
    All labs is being done on microsoft os(MSDOS)
    Since I have ubuntu 64 bit i have used dosbox
 
-1.
-#+begin_src bash
+1. Install Dosbox
+
+```
 sudo apt-get install dosbox
-   #+end_src
-   2. Download MASM assembler. It is inside masm folder.
-   3.
-   #+BEGIN_SRC doxbox
+```
+
+2. Download MASM assembler. It is inside masm folder.
+
+3. Mount the files in dosbox
+
+```
 mount c: path_to_MASM_assembler
+```
+```
 c:
-   #+END_SRC
+```

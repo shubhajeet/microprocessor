@@ -1,0 +1,18 @@
+
+  {% for source in sources %}
+  <section class="panel panel-default">
+    <div class="panel-heading">
+      <a href="{{source}}" class="panel-title">
+      <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
+	{{source}}
+      </a>
+    </div>
+    <div class="panel-body">
+      {%capture filePath %}{{source}}{%endcapture%}
+      {% highlight c linenos %}
+      {% include_relative {{filePath}}%}
+      {% endhighlight %}
+    </div>
+   </section>
+  {% endfor %}
+  
